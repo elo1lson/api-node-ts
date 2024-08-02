@@ -3,20 +3,20 @@ import { Request, RequestHandler, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import * as yup from "yup";
 import { validation } from "../../shared/middlewares";
-interface Icidade {
-    nome: string;
+
+interface IParamProps {
+    id?: number;
 }
 
-export const createValidation = validation((getSchema) => ({
-    body: getSchema<Icidade>(
+export const deleteByIdValidation = validation((getSchema) => ({
+    params: getSchema<IParamProps>(
         yup.object().shape({
-            nome: yup.string().required().min(3),
+            id: yup.number().integer().required().moreThan(0),
         })
     ),
 }));
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-export const create = async (req: Request<{}, {}, Icidade>, res: Response) => {
+export const deleteById = async (req: Request<IParamProps>, res: Response) => {
     return res
         .status(StatusCodes.INTERNAL_SERVER_ERROR)
         .send("Não implementado!");
