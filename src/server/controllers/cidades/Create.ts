@@ -17,7 +17,5 @@ export const createValidation = validation((getSchema) => ({
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export const create = async (req: Request<{}, {}, Icidade>, res: Response) => {
-    return res
-        .status(StatusCodes.INTERNAL_SERVER_ERROR)
-        .send("Não implementado!");
+    return res.status(StatusCodes.CREATED).send("Não implementado!");
 };
