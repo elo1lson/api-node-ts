@@ -23,9 +23,15 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
+    - name: Install dependencies with Yarn
+      run: yarn install --legacy-peer-deps
+
+    - name: Run Tests with Yarn
+      run: yarn test
+
     - name: Install dependencies and Build
       run: |
-        npm install
+        npm install --legacy-peer-deps
         grunt
 
     - name: Start Application
