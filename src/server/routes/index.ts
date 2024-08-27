@@ -35,5 +35,4 @@ router.post(
     CidadeController.createValidation,
     CidadeController.create
 );
-
 export { router };
